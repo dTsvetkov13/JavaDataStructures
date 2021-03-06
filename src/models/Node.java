@@ -54,4 +54,9 @@ public class Node<T>
 	{
 		return this.next;
 	}
+	
+	public boolean hasNext()
+	{
+		return this.next == null;
+	}
 }
