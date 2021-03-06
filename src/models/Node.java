@@ -3,7 +3,6 @@ package models;
 public class Node<T>
 {
 	private T value;
-	private Node<T> previous;
 	private Node<T> next;
 	
 	public Node()
@@ -24,14 +23,6 @@ public class Node<T>
 		}
 	}
 	
-	public void setPrevious(Node<T> value)
-	{
-		if(value != null)
-		{
-			this.previous = value;
-		}
-	}
-	
 	public void setNext(Node<T> value)
 	{
 		if(value != null)
@@ -45,11 +36,6 @@ public class Node<T>
 		return this.value;
 	}
 	
-	public Node<T> getPrevious()
-	{
-		return this.previous;
-	}
-	
 	public Node<T> getNext()
 	{
 		return this.next;
@@ -57,6 +43,6 @@ public class Node<T>
 	
 	public boolean hasNext()
 	{
-		return this.next == null;
+		return this.next != null;
 	}
 }
