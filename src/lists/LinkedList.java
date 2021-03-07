@@ -172,4 +172,19 @@ public class LinkedList<T> implements IList<T>
 		this.first = null;
 	}
 
+	@Override
+	public int size()
+	{
+		if(this.first == null) return 0;
+		
+		Node<T> node = this.first;
+		int i = 0;
+		
+		for(; node.hasNext(); i++)
+		{
+			node = node.getNext();
+		}
+		
+		return i;
+	}
 }
