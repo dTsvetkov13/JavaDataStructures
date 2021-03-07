@@ -35,18 +35,23 @@ public class LinkedList<T> implements IList<T>
 		return false;
 	}
 
+	//O(n) = n
 	@Override
 	public void add(T item)
 	{
 		Node<T> node = this.first;
+		
+		if(node == null)
+		{
+			this.first = new Node(item);
+			return;
+		}
 		
 		while(node != null)
 		{
 			if(!node.hasNext())
 			{
 				Node temp = new Node(item);
-				temp.setPrevious(node);
-				
 				node.setNext(temp);
 				return;
 			}
@@ -56,33 +61,115 @@ public class LinkedList<T> implements IList<T>
 	}
 
 	@Override
-	public void insertAt(T item, int index) {
-		// TODO Auto-generated method stub
+	public void insertAt(T item, int index)
+	{
+		Node<T> node = this.first;
+		Node temp = new Node(item);
 		
+		int i = 0;
+		
+		if(index == 0)
+		{
+			temp.setNext(this.first);
+			this.first = temp;
+			return;
+		}
+		
+		while(node != null)
+		{
+			if(i == index - 1)
+			{
+				temp.setNext(node.getNext());
+				node.setNext(temp);
+				return;
+			}
+			
+			node = node.getNext();
+			i++;
+		}
+		
+		throw new IllegalArgumentException("Index is bigger than the size!");
 	}
 
 	@Override
-	public void removeFrom(int index) {
-		// TODO Auto-generated method stub
+	public void removeFrom(int index)
+	{
+		Node<T> node = this.first;
 		
+		if(index == 0)
+		{
+			this.first = this.first.getNext();
+			return;
+		}
+		
+		int i = 0;
+		
+		while(node != null)
+		{
+			if(i == index - 1)
+			{
+				if(node.hasNext())
+				{
+					node.setNext(node.getNext().getNext());
+				}
+				return;
+			}
+			
+			node = node.getNext();
+			i++;
+		}
 	}
 
 	@Override
-	public void remove(T item) {
-		// TODO Auto-generated method stub
+	public void remove(T item)
+	{
+		Node<T> node = this.first;
 		
+		if(node.getValue().equals(item))
+		{
+			this.first = this.first.getNext();
+		}
+		
+		while(node != null)
+		{
+			if(node.hasNext())
+			{
+				if(node.getNext().getValue().equals(item))
+				{
+					node.setNext(node.getNext().getNext());
+					return;
+				}
+			}
+			
+			node = node.getNext();
+		}
+		
+		throw new IllegalArgumentException("There is no such item!");
 	}
 
 	@Override
 	public T get(int index) {
-		// TODO Auto-generated method stub
+		Node<T> node = this.first;
+		int i = 0;
+		
+		while(node != null)
+		{
+			if(i == index)
+			{
+				return node.getValue();
+			}
+			
+			node = node.getNext();
+			i++;
+		}
+		
 		return null;
 	}
 
 	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
+	public void clear()
+	{
+		this.first = null;
 	}
 
 }
