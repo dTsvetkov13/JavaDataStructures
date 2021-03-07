@@ -17,18 +17,12 @@ public class Node<T>
 	
 	public void setValue(T value)
 	{
-		if(value != null)
-		{
-			this.value = value;
-		}
+		this.value = value;
 	}
 	
 	public void setNext(Node<T> value)
 	{
-		if(value != null)
-		{
-			this.next = value;
-		}
+		this.next = value;
 	}
 	
 	public T getValue()
