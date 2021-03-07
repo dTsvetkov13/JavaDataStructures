@@ -131,14 +131,19 @@ public class LinkedList<T> implements IList<T>
 		}
 		
 		while(node != null)
-		{
-			if(node.hasNext())
+		{			
+			if(node.getNext().getValue().equals(item))
 			{
-				if(node.getNext().getValue().equals(item))
+				if(node.getNext().hasNext())
 				{
-					node.setNext(node.getNext().getNext());
-					return;
+					node.setNext(node.getNext().getNext());	
 				}
+				else
+				{
+					node.setNext(null);
+				}
+				
+				return;
 			}
 			
 			node = node.getNext();
