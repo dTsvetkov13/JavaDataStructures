@@ -185,6 +185,6 @@ public class LinkedList<T> implements IList<T>
 			node = node.getNext();
 		}
 		
-		return i;
+		return i + 1;
 	}
 }
