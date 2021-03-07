@@ -17,4 +17,6 @@ public interface IList<T>
 	T get(int index);
 
 	void clear();
+	
+	int size();
 }
