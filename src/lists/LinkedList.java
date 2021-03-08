@@ -1,15 +1,13 @@
 package lists;
 
 import java.util.Arrays;
-
-import com.sun.tools.javac.code.Attribute.Array;
-
 import interfaces.IList;
 import models.Node;
 
 public class LinkedList<T> implements IList<T>
 {
 	private Node<T> first;
+	private Node<T> last;
 	
 	public LinkedList()
 	{
@@ -57,28 +55,25 @@ public class LinkedList<T> implements IList<T>
 		return false;
 	}
 
-	//O(n) = n
+	//O(1)
 	@Override
 	public void add(T item)
 	{
-		Node<T> node = this.first;
-		
-		if(node == null)
+		if(this.first == null)
 		{
 			this.first = new Node<T>(item);
-			return;
 		}
-		
-		while(node != null)
+		else if(this.last == null)
 		{
-			if(!node.hasNext())
-			{
-				Node temp = new Node(item);
-				node.setNext(temp);
-				return;
-			}
+			this.last = new Node<T>(item);
+			this.first.setNext(last);
+		}
+		else
+		{
+			Node<T> previousLast = this.last;
+			this.last = new Node<T>(item);
 			
-			node = node.getNext();
+			previousLast.setNext(last);
 		}
 	}
 
