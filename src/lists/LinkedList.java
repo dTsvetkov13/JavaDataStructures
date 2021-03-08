@@ -28,6 +28,7 @@ public class LinkedList<T> implements IList<T>
 		this(Arrays.asList(array));
 	}
 	
+	//O(1) complexity
 	@Override
 	public boolean isEmpty()
 	{
@@ -37,7 +38,8 @@ public class LinkedList<T> implements IList<T>
 		}
 		return false;
 	}
-
+	
+	//O(n) complexity
 	@Override
 	public boolean contains(T item)
 	{
@@ -56,7 +58,7 @@ public class LinkedList<T> implements IList<T>
 		return false;
 	}
 
-	//O(1)
+	//O(1) complexity
 	@Override
 	public void add(T item)
 	{
@@ -79,7 +81,8 @@ public class LinkedList<T> implements IList<T>
 		
 		this.count++;
 	}
-
+	
+	//O(n) complexity
 	@Override
 	public void insertAt(T item, int index)
 	{
@@ -112,7 +115,8 @@ public class LinkedList<T> implements IList<T>
 		
 		throw new IllegalArgumentException("Index is bigger than the size!");
 	}
-
+	
+	//O(n) complexity
 	@Override
 	public void removeFrom(int index)
 	{
@@ -145,6 +149,7 @@ public class LinkedList<T> implements IList<T>
 		this.count--;
 	}
 
+	//O(n) complexity
 	@Override
 	public void remove(T item)
 	{
@@ -179,7 +184,8 @@ public class LinkedList<T> implements IList<T>
 		
 		throw new IllegalArgumentException("There is no such item!");
 	}
-
+	
+	//O(n) complexity
 	@Override
 	public T get(int index) {
 		Node<T> node = this.first;
@@ -198,7 +204,8 @@ public class LinkedList<T> implements IList<T>
 		
 		return null;
 	}
-
+	
+	//O(1) complexity
 	@Override
 	public void clear()
 	{
@@ -207,6 +214,7 @@ public class LinkedList<T> implements IList<T>
 		this.count = 0;
 	}
 
+	//O(1) complexity
 	@Override
 	public int size()
 	{
