@@ -8,6 +8,7 @@ public class LinkedList<T> implements IList<T>
 {
 	private Node<T> first;
 	private Node<T> last;
+	private int count;
 	
 	public LinkedList()
 	{
@@ -192,21 +193,13 @@ public class LinkedList<T> implements IList<T>
 	public void clear()
 	{
 		this.first = null;
+		this.last = null;
+		this.count = 0;
 	}
 
 	@Override
 	public int size()
 	{
-		if(this.first == null) return 0;
-		
-		Node<T> node = this.first;
-		int i = 0;
-		
-		for(; node.hasNext(); i++)
-		{
-			node = node.getNext();
-		}
-		
-		return i + 1;
+		return this.count;
 	}
 }
