@@ -76,6 +76,8 @@ public class LinkedList<T> implements IList<T>
 			
 			previousLast.setNext(last);
 		}
+		
+		this.count++;
 	}
 
 	@Override
@@ -90,6 +92,7 @@ public class LinkedList<T> implements IList<T>
 		{
 			temp.setNext(this.first);
 			this.first = temp;
+			this.count++;
 			return;
 		}
 		
@@ -99,6 +102,7 @@ public class LinkedList<T> implements IList<T>
 			{
 				temp.setNext(node.getNext());
 				node.setNext(temp);
+				this.count++;
 				return;
 			}
 			
@@ -117,6 +121,7 @@ public class LinkedList<T> implements IList<T>
 		if(index == 0)
 		{
 			this.first = this.first.getNext();
+			this.count--;
 			return;
 		}
 		
@@ -136,6 +141,8 @@ public class LinkedList<T> implements IList<T>
 			node = node.getNext();
 			i++;
 		}
+		
+		this.count--;
 	}
 
 	@Override
@@ -146,6 +153,8 @@ public class LinkedList<T> implements IList<T>
 		if(node.getValue().equals(item))
 		{
 			this.first = this.first.getNext();
+			this.count--;
+			return;
 		}
 		
 		while(node != null)
@@ -161,6 +170,7 @@ public class LinkedList<T> implements IList<T>
 					node.setNext(null);
 				}
 				
+				this.count--;
 				return;
 			}
 			
