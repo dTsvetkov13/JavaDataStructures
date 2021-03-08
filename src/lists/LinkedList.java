@@ -7,6 +7,19 @@ public class LinkedList<T> implements IList<T>
 {
 	private Node<T> first;
 	
+	public LinkedList()
+	{
+		this.clear();
+	}
+	
+	public LinkedList(T[] array)
+	{
+		for(T item : array)
+		{
+			this.add(item);
+		}
+	}
+	
 	@Override
 	public boolean isEmpty()
 	{
@@ -43,7 +56,7 @@ public class LinkedList<T> implements IList<T>
 		
 		if(node == null)
 		{
-			this.first = new Node(item);
+			this.first = new Node<T>(item);
 			return;
 		}
 		
@@ -64,7 +77,7 @@ public class LinkedList<T> implements IList<T>
 	public void insertAt(T item, int index)
 	{
 		Node<T> node = this.first;
-		Node temp = new Node(item);
+		Node<T> temp = new Node(item);
 		
 		int i = 0;
 		
