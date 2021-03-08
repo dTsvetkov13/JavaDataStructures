@@ -1,5 +1,9 @@
 package lists;
 
+import java.util.Arrays;
+
+import com.sun.tools.javac.code.Attribute.Array;
+
 import interfaces.IList;
 import models.Node;
 
@@ -12,12 +16,17 @@ public class LinkedList<T> implements IList<T>
 		this.clear();
 	}
 	
-	public LinkedList(T[] array)
+	public LinkedList(Iterable<T> iterable)
 	{
-		for(T item : array)
+		for(T item : iterable)
 		{
 			this.add(item);
 		}
+	}
+	
+	public LinkedList(T[] array)
+	{
+		this(Arrays.asList(array));
 	}
 	
 	@Override
