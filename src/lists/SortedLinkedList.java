@@ -1,15 +1,14 @@
 package lists;
 
-import interfaces.IList;
+import interfaces.ISortedList;
 import models.DoublyNode;
-import models.Node;
 
-public class SortedList<T extends Comparable<T>> implements IList<T>
+public class SortedLinkedList<T extends Comparable<T>> implements ISortedList<T>
 {
 	private DoublyNode<T> first;
 	private int count;
 	
-	public SortedList()
+	public SortedLinkedList()
 	{
 		
 	}
@@ -21,7 +20,6 @@ public class SortedList<T extends Comparable<T>> implements IList<T>
 	}
 
 	// O(n) complexity
-	//implement with binary search
 	@Override
 	public boolean contains(T item)
 	{
@@ -95,18 +93,14 @@ public class SortedList<T extends Comparable<T>> implements IList<T>
 	}
 
 	@Override
-	public void insertAt(T item, int index)
+	public void removeFrom(int index)
 	{
 	}
 
 	@Override
-	public void removeFrom(int index)
-	{	
-	}
-
-	@Override
 	public void remove(T item)
-	{	
+	{
+		
 	}
 	
 	// O(n) complexity
