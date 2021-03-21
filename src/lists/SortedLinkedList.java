@@ -95,12 +95,73 @@ public class SortedLinkedList<T extends Comparable<T>> implements ISortedList<T>
 	@Override
 	public void removeFrom(int index)
 	{
+		if(this.first == null)
+		{
+			throw new RuntimeException("The list is empty.");
+		}
+		
+		if(index < 0)
+		{
+			throw new IllegalArgumentException("Index cannot be negative number.");
+		}
+		
+		if(index == 0)
+		{
+			this.first = this.first.getNext();
+			this.count--;
+			return;
+		}
+		
+		DoublyNode<T> currentNode = this.first.getNext();
+		
+		int counter = 1;
+		
+		while(currentNode != null && counter < index)
+		{
+			currentNode = currentNode.getNext();
+			counter++;
+		}
+		
+		if(currentNode == null || counter != index)
+		{
+			throw new IllegalArgumentException("Invalid index.");	
+		}
+		
+		currentNode.getPrevious().setNext(currentNode.getNext());
+		this.count--;
 	}
-
+	
+	//O(n) complexity
 	@Override
 	public void remove(T item)
 	{
+		if(this.first == null)
+		{
+			throw new RuntimeException("The list is empty.");
+		}
 		
+		if(this.first.getValue().equals(item))
+		{
+			this.first = this.first.getNext();
+			this.count--;
+			return;
+		}
+		
+		DoublyNode<T> currentNode = this.first.getNext();
+		
+		while(currentNode != null)
+		{
+			if(currentNode.getValue().equals(item))
+			{
+				currentNode.getPrevious().setNext(currentNode.getNext());
+				this.count--;
+				return;
+			}
+			
+			currentNode = currentNode.getNext();
+		}
+		
+		throw new IllegalArgumentException("The list does not contain such item.");
 	}
 	
 	// O(n) complexity
